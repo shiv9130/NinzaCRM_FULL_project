@@ -5,11 +5,9 @@ import java.util.List;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.testng.Reporter;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentReporter;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
@@ -52,6 +50,7 @@ public class extentReport implements ITestListener {
 	public void onTestSuccess(ITestResult result) {
 		test=report.createTest(result.getTestClass().getTestName());
 		test.assignCategory(result.getMethod().getGroups());
+		test.log(Status.PASS, "test pass");
 		
 		
 	}
@@ -68,7 +67,7 @@ public class extentReport implements ITestListener {
 
 	@Override
 	public void onFinish(ITestContext context) {
-		
+		report.flush();
 	}
 	
 	

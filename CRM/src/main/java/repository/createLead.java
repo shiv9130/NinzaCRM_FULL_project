@@ -131,7 +131,7 @@ public class createLead extends basePageN_CRM{
 	@FindBy(xpath="//*[name()='svg' and @data-icon='plus']")
 	private WebElement plusicon;
 	
-	@FindBy(xpath="//label[text()='Description:']")
+	@FindBy(xpath="//textarea[@name='description']")
 	private WebElement labelDescription;
 	
 	@FindBy(name="description")
