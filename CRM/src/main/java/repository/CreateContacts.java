@@ -70,5 +70,85 @@ public class CreateContacts extends basePageN_CRM{
 	
 	@FindBy(xpath = "//label[text()='Campaign']")
 	private WebElement campaignLabel;
+
+	public WebElement getCreateContactButton() {
+		return createContactButton;
+	}
+
+	public WebElement getCreateContactId() {
+		return createContactId;
+	}
+
+	public WebElement getContactId() {
+		return contactId;
+	}
+
+	public WebElement getOrganizationLabel() {
+		return organizationLabel;
+	}
+
+	public WebElement getLabelTitle() {
+		return labelTitle;
+	}
+
+	public WebElement getLabelContactName() {
+		return labelContactName;
+	}
+
+	public WebElement getLabelMobile() {
+		return labelMobile;
+	}
+
+	public WebElement getLabelEmail() {
+		return labelEmail;
+	}
+
+	public WebElement getLabelDepartment() {
+		return labelDepartment;
+	}
+
+	public WebElement getLabelOfficePhone() {
+		return labelOfficePhone;
+	}
+
+	public WebElement getLabelCampaign() {
+		return labelCampaign;
+	}
+
+	public WebElement getContactIdTF() {
+		return contactIdTF;
+	}
+
+	public WebElement getContactNameTF() {
+		return contactNameTF;
+	}
+
+	public WebElement getOrganizationNameTF() {
+		return organizationNameTF;
+	}
+
+	public WebElement getMobileTF() {
+		return mobileTF;
+	}
+
+	public WebElement getTitleTF() {
+		return titleTF;
+	}
+
+	public WebElement getEmailTF() {
+		return emailTF;
+	}
+
+	public WebElement getDepartmentTF() {
+		return departmentTF;
+	}
+
+	public WebElement getCampaignPlus() {
+		return campaignPlus;
+	}
+
+	public WebElement getCampaignLabel() {
+		return campaignLabel;
+	}
 	
 }
