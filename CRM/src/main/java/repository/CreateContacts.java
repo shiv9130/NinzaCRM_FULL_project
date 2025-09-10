@@ -70,9 +70,16 @@ public class CreateContacts extends basePageN_CRM{
 	
 	@FindBy(xpath = "//label[text()='Campaign']")
 	private WebElement campaignLabel;
+	
+	//button[text()='Create Contact']
+	@FindBy(xpath = "//button[text()='Create Contact']")
+	private WebElement createContactbtn;
 
 	public WebElement getCreateContactButton() {
 		return createContactButton;
+	}
+	public WebElement getCreateContactBtn() {
+		return createContactbtn;
 	}
 
 	public WebElement getCreateContactId() {
