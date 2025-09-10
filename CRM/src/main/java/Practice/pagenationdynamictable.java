@@ -1,16 +1,16 @@
 package Practice;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class pagenationdynamictable {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -23,14 +23,34 @@ public class pagenationdynamictable {
 	 
 	   driver.findElement(By.xpath("//button[text()='Sign In']")).click();
 	   
-	   ////table[@class='table table-striped table-hover']
-	   WebElement forward = driver.findElement(By.xpath("//a[text()='⟩']"));	
-	   int count=0;
-	   while(driver.findElement(By.xpath("//a[text()='⟩']")).isEnabled()) {
-		   driver.findElement(By.xpath("//a[text()='⟩']")).click();
-		   count++;
-	   }
-	   System.out.println(count);
+	   
+		 //table[@class="table table-striped table-hover"]/tbody/tr
+	   
+	   
+	// Loop until pagination ends
+       while (true) {
+           // Get all rows/data on the current page
+           List<WebElement> rows = driver.findElements(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr"));
+           System.out.println("Rows on this page: " + rows.size());
+
+           // Example: print text from the first column
+           for (WebElement row : rows) {
+               System.out.println(row.getText());
+           }
+
+           // Check if "Next" button is enabled/present
+           List<WebElement> nextBtn = driver.findElements(By.xpath("//a[text()='⟩']"));
+           
+           if (nextBtn.size() > 0 && nextBtn.get(0).isEnabled()) {
+               nextBtn.get(0).click();   // click next page
+               Thread.sleep(2000);       // wait for page to load
+           } else {
+               break;  // Exit loop if no Next button
+           }
+       }
+
+       driver.quit();
+
 
 	}
 
