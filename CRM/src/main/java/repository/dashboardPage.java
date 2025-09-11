@@ -50,6 +50,13 @@ public class dashboardPage extends basePageN_CRM {
 	@FindBy(xpath = "//div[text()='rmgyantra']")
 	private WebElement username;
 	
+	@FindBy(xpath = "//*[name()='svg' and @data-icon='user']")
+	private WebElement usericon;
+	
+	public WebElement getUsericon() {
+		return usericon;
+	}
+
 	@FindBy(xpath = "//div[text()='ADMIN']")
 	private WebElement admin;
 	

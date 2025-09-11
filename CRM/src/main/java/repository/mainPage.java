@@ -109,7 +109,11 @@ public class mainPage extends basePageN_CRM {
 		return EmptyPw;
 	}
 	
-	
+	public void loginCRM(String un, String pw) {
+		txtFieldUn.sendKeys(un);
+		txtfieldPw.sendKeys(pw);
+		btnSignIn.click();
+	}
 	
 }
 
