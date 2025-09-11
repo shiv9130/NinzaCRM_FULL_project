@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import exceptions_package.ElementNotFoundException;
+import exceptionsUtility.ElementNotFoundException;
 
 public class PropertyFileUtility {
 	
