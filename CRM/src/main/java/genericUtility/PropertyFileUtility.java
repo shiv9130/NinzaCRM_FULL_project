@@ -8,7 +8,7 @@ public class PropertyFileUtility {
 	
 	//Read data from properties
 	public String toReadDataFromProperties(String key) throws IOException {
-		FileInputStream fis = new FileInputStream("./configAppData/commonData.properties");
+		FileInputStream fis = new FileInputStream("./src/main/resources/Browser.properties");
 		Properties prop = new Properties();
 		prop.load(fis);
 		String data = prop.getProperty(key);

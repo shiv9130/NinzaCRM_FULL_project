@@ -48,7 +48,8 @@ public class pagenationdynamictable {
                break;  // Exit loop if no Next button
            }
        }
-
+       
+      // driver.findElement(By.xpath("//a[@aria-label='Go to page number "+i+"']"));
        driver.quit();
 
 
