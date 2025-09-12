@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import exceptionsUtility.ElementNotFoundException;
+import exceptionsUtility.FileNotFoundException;
 
 public class PropertyFileUtility {
 	
@@ -19,7 +20,7 @@ public class PropertyFileUtility {
 				String data = prop.getProperty(key);
 				return data;
 	        } catch (Exception e) {
-	            throw new ElementNotFoundException("Login page elements not found: " + e.getMessage());
+	            throw new FileNotFoundException("File Not Found: " + e.getMessage());
 	        }
 	}
 
