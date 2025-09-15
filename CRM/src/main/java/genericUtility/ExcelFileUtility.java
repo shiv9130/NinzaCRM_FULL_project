@@ -17,7 +17,7 @@ public class ExcelFileUtility {
 	public String toReadDataFromExcel(String sheetName, int row, int cell)  {
 		
 		try {
-			FileInputStream fis= new FileInputStream("./configAppData/testScriptData.xlsx");
+			FileInputStream fis= new FileInputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
 			Workbook wb = WorkbookFactory.create(fis);
 			String data = wb.getSheet(sheetName).getRow(row).getCell(cell).getStringCellValue();
 			wb.close();

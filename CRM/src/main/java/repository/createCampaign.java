@@ -14,6 +14,17 @@ public class createCampaign extends basePageN_CRM{
 	@FindBy(xpath = "//h3[text()='Create Campaign']")
 	private WebElement headingCreateCampaign;
 	
+	@FindBy(xpath = "//span[text()='Create Campaign']")
+	private WebElement createCampaignButton1;
+	
+	public WebElement getCreateCampaignButton1() {
+		return createCampaignButton1;
+	}
+
+	public void setCreateCampaignButton1(WebElement createCampaignButton1) {
+		this.createCampaignButton1 = createCampaignButton1;
+	}
+
 	@FindBy(xpath = "//label[text()='Campaign ID:']")
 	private WebElement labelCampaignId;
 	
