@@ -4,8 +4,6 @@ import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
-import com.aventstack.extentreports.util.Assert;
-
 import BaseClassNinzaCrmFull.baseClass;
 import genericUtility.ExcelFileUtility;
 import genericUtility.JavaUtility;
