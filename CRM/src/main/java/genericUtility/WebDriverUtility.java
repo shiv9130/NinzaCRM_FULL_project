@@ -104,11 +104,18 @@ public class WebDriverUtility {
 //		driver.switchTo().window(parentID);
 //	}
 	//TKS
-	public void takeScreenshotOfWebPage(WebDriver driver, String ssName) throws IOException {
+	public void takeScreenshotOfWebPage(WebDriver driver, String ssName) 
+			{
+		
 		TakesScreenshot tks= (TakesScreenshot) driver;
 		File src = tks.getScreenshotAs(OutputType.FILE);
 		File dest= new File("./errorShots/"+ssName+".png");
-		FileHandler.copy(src, dest);
+		try {
+			FileHandler.copy(src, dest);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 	}
 
 	

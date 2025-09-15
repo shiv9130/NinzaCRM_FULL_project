@@ -1,16 +1,14 @@
 package genericUtility;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Properties;
 
-import exceptionsUtility.ElementNotFoundException;
 import exceptionsUtility.FileNotFoundException;
 
 public class PropertyFileUtility {
 	
 	//Read data from properties
-	public String toReadDataFromProperties(String key) throws IOException {
+	public String toReadDataFromProperties(String key) {
 		
 		
 		 try {

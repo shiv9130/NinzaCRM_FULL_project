@@ -74,7 +74,7 @@ public class baseClass {
 			 pw = pu.toReadDataFromProperties("Password");
 			 mainPage mp= new mainPage(driver);
 		     mp.loginCRM(un, pw);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw new FileNotFoundException("File Not Found "+e.getMessage());
 		}

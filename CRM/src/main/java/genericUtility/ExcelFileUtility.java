@@ -8,15 +8,25 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
+import exceptionsUtility.FileNotFoundException;
+
 public class ExcelFileUtility {
 	
+
 	//Read data from excel
-	public String toReadDataFromExcel(String sheetName, int row, int cell) throws EncryptedDocumentException, IOException {
-		FileInputStream fis= new FileInputStream("./configAppData/testScriptData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
-		String data = wb.getSheet(sheetName).getRow(row).getCell(cell).getStringCellValue();
-		wb.close();
-		return data;
+	public String toReadDataFromExcel(String sheetName, int row, int cell)  {
+		
+		try {
+			FileInputStream fis= new FileInputStream("./configAppData/testScriptData.xlsx");
+			Workbook wb = WorkbookFactory.create(fis);
+			String data = wb.getSheet(sheetName).getRow(row).getCell(cell).getStringCellValue();
+			wb.close();
+			return data;
+		} catch (Exception e) {
+			 throw new FileNotFoundException("File Not Found: " + e.getMessage());
+			
+		}
+		
 	}
 	
 	//Get the row count
