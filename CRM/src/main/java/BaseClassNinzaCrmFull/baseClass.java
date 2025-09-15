@@ -5,7 +5,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -61,6 +64,7 @@ public class baseClass {
 		} catch (Exception e) {
 			throw new FileNotFoundException("File Not Found"+e.getMessage());
 		}
+    	Reporter.log("browser open sucessfully and enter url",true);
     		
     }
     @BeforeMethod(groups= {"smokeTest","regressionTest"})
@@ -77,7 +81,7 @@ public class baseClass {
 			throw new FileNotFoundException("File Not Found "+e.getMessage());
 		}
     	
-    	
+		Reporter.log("user signin to ninzaCRM",true);
     	  	
     }
     
@@ -87,7 +91,28 @@ public class baseClass {
     	dashboardPage dp = new dashboardPage(driver);
         wu.moveToElement(driver, dp.getUserIcon());
         dp.getLogout().click();
+        
+    	Reporter.log("user logout sucessfully",true);
     	
+    }
+    
+    @AfterClass(groups= {"smokeTest","regressionTest"})
+    public void configAC(){
+    	
+    	driver.close();
+    	driver.quit();
+    	Reporter.log("browser close sucessfully",true);
+    	
+    }
+    @AfterTest(groups= {"smokeTest","regressionTest"})
+    public void configAT() {
+    	
+    	Reporter.log("post-condition",true);
+    }
+    
+    @AfterSuite(groups= {"smokeTest","regressionTest"})
+    public void configAS() {
+    	Reporter.log("database closed sucessfully",true);
     }
     
     
