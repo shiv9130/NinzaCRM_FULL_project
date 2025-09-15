@@ -1,3 +1,4 @@
+package testScripts;
 import org.testng.annotations.Test;
 
 import BaseClassNinzaCrmFull.baseClass;
