@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
+import exceptionsUtility.FileNotFoundException;
 import genericUtility.PropertyFileUtility;
 import genericUtility.WebDriverUtility;
 import repository.dashboardPage;
@@ -40,31 +41,45 @@ public class baseClass {
     	
     }
     @BeforeClass(groups= {"smokeTest","regressionTest"})
-    public void configBC() throws IOException {
-    	
-    	String brow = pu.toReadDataFromProperties("Browser");
-    	String url = pu.toReadDataFromProperties("URL");
-    	
-    	if(brow.equalsIgnoreCase("chrome")) {
-    		driver= new ChromeDriver();
-    	}else if (brow.equalsIgnoreCase("edge")) {
-    		driver = new EdgeDriver();
-    	}else if (brow.equalsIgnoreCase("firefox")) {
-    		driver = new FirefoxDriver();
-    	}else {
-    		driver = new ChromeDriver();
-    	}
-    	
-    	driver.get(url);
-    	driver.manage().window().maximize();
-    	wu.waitForPageToLoad(driver);	
+    public void configBC(){
+    	try {
+    		String brow = pu.toReadDataFromProperties("Browser");
+        	String url = pu.toReadDataFromProperties("URL");
+        	
+        	if(brow.equalsIgnoreCase("chrome")) {
+        		driver= new ChromeDriver();
+        	}else if (brow.equalsIgnoreCase("edge")) {
+        		driver = new EdgeDriver();
+        	}else if (brow.equalsIgnoreCase("firefox")) {
+        		driver = new FirefoxDriver();
+        	}else {
+        		driver = new ChromeDriver();
+        	}
+        	
+        	driver.get(url);
+        	driver.manage().window().maximize();
+        	wu.waitForPageToLoad(driver);
+			
+		} catch (Exception e) {
+			throw new FileNotFoundException("File Not Found"+e.getMessage());
+		}
+    		
     }
     @BeforeMethod(groups= {"smokeTest","regressionTest"})
-    public void configBM() throws IOException {
-    	String un = pu.toReadDataFromProperties("Username");
-    	String pw = pu.toReadDataFromProperties("Password");
-    	mainPage mp= new mainPage(driver);
-    	mp.loginCRM(un, pw);
+    public void configBM() {
+    	
+    	String un,pw;
+		try {
+			 un = pu.toReadDataFromProperties("Username");
+			 pw = pu.toReadDataFromProperties("Password");
+			 mainPage mp= new mainPage(driver);
+		     mp.loginCRM(un, pw);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			throw new FileNotFoundException("File Not Found "+e.getMessage());
+		}
+    	
+    	
     	  	
     }
     
