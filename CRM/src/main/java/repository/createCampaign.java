@@ -70,7 +70,7 @@ public class createCampaign extends basePageN_CRM{
 	@FindBy(xpath = "//button[text()='Create Campaign']")
 	private WebElement btnCreateCampaign;
 	
-	@FindBy(xpath="//div[text()='Campaign test Successfully Added']")
+	@FindBy(xpath="//div[contains(text(), 'Campaign')]")
 	private WebElement createCampaignMsg;
 
 	public WebElement getCreateCampaignMsg() {

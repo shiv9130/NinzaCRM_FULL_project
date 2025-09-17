@@ -2,11 +2,18 @@ package testScripts;
 
 import static org.testng.Assert.assertEquals;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import BaseClassNinzaCrmFull.baseClass;
 import genericUtility.ExcelFileUtility;
 import genericUtility.JavaUtility;
+import genericUtility.WebDriverUtility;
 import repository.createCampaign;
 
 public class createCampaignTest extends baseClass {
@@ -18,6 +25,7 @@ public class createCampaignTest extends baseClass {
 	public void createCampaignTestPage() throws InterruptedException {
 		int random = ju.generateRandomNumber();
 		createCampaign cp = new createCampaign(driver);
+		WebDriverUtility wu= new WebDriverUtility();
 		Thread.sleep(20000);
 		cp.getCreateCampaignButton1().click();
 
@@ -44,10 +52,13 @@ public class createCampaignTest extends baseClass {
 		cp.getDescription().sendKeys(desc);
 
 		cp.getBtnCreateCampaign().click();
-		
-		String msg =cp.getCreateCampaignMsg().getText();
-		System.out.println(msg);
-
+		Thread.sleep(5000);
+		WebElement message =cp.getCreateCampaignMsg();
+		wu.waitForVisibilityOfElement(driver, message);
+		 String msg = message.getText();
+		  
+		 assertEquals(message, msg.contains(campaignName));
+		 
 	}
 
 }
