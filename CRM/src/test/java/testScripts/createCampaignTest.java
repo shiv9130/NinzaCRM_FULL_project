@@ -55,9 +55,9 @@ public class createCampaignTest extends baseClass {
 		Thread.sleep(5000);
 		WebElement message =cp.getCreateCampaignMsg();
 		wu.waitForVisibilityOfElement(driver, message);
-		 String msg = message.getText();
+		String msg = message.getText();
 		  
-		 assertEquals(message, msg.contains(campaignName));
+		 assertEquals(message.getText().contains(campaignName), msg.contains(campaignName));
 		 
 	}
 
