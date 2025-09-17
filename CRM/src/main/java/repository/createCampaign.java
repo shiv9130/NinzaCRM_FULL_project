@@ -64,11 +64,18 @@ public class createCampaign extends basePageN_CRM{
 	@FindBy(xpath = "//label[text()='Description:']")
 	private WebElement descriptionLabel;
 	
-	@FindBy(name = "description")
+	@FindBy(xpath = "//textarea[@name=\"description\"]")
 	private WebElement description;
 	
 	@FindBy(xpath = "//button[text()='Create Campaign']")
 	private WebElement btnCreateCampaign;
+	
+	@FindBy(xpath="//div[text()='Campaign test Successfully Added']")
+	private WebElement createCampaignMsg;
+
+	public WebElement getCreateCampaignMsg() {
+		return createCampaignMsg;
+	}
 
 	public WebElement getHeadingCreateCampaign() {
 		return headingCreateCampaign;
