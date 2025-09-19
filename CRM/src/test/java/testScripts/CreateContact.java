@@ -29,31 +29,29 @@ public class CreateContact extends baseClass{
 		dp.getContactsLink().click();
 		cp.getCreateContactButton().click();
 		
-		String orgname = eu.toReadDataFromExcel("contacts", 1, 0);
+		String orgname = eu.toReadDataFromExcel("contact", 1, 0);
 		cp.getOrganizationNameTF().sendKeys(orgname);
 		
-		String title = eu.toReadDataFromExcel("contacts", 1, 1);
+		String title = eu.toReadDataFromExcel("contact", 1, 1);
 		cp.getTitleTF().sendKeys(title);
 		
-		String dept = eu.toReadDataFromExcel("contacts", 1, 2);
+		String dept = eu.toReadDataFromExcel("contact", 1, 2);
 		cp.getDepartmentTF().sendKeys(dept);
 		
-		String offphn = eu.toReadDataFromExcel("contacts", 1, 3);
+		String offphn = eu.toReadDataFromExcel("contact", 1, 3);
 		cp.getOfficePhoneTF().sendKeys(offphn);
 		
-		String cname = eu.toReadDataFromExcel("contacts", 1, 4);
+		String cname = eu.toReadDataFromExcel("contact", 1, 4);
 		cp.getContactNameTF().sendKeys(cname);
 		
-		String mob = eu.toReadDataFromExcel("contacts", 1, 5);
+		String mob = eu.toReadDataFromExcel("contact", 1, 5);
 		cp.getContactNameTF().sendKeys(mob);
 		
-		
-	
-		String email = eu.toReadDataFromExcel("contacts", 1, 6);
+		String email = eu.toReadDataFromExcel("contact", 1, 6);
 		cp.getEmailTF().sendKeys(email);
 		
-		String camp = eu.toReadDataFromExcel("contacts", 1, 7);
-		cp.getCampaignPlus().click();
+		//String camp = eu.toReadDataFromExcel("contact", 1, 7);
+	//	cp.getCampaignPlus().click();
 		
 		String parentId = driver.getWindowHandle();
 		wu.toSwitchToWindow(driver, parentId);
@@ -63,7 +61,6 @@ public class CreateContact extends baseClass{
 		ddSel.selectByValue("campaignName");
 		driver.findElement(By.xpath("(//button[text()='Select'])[1]")).click();
 	//	driver.switchTo().defaultContent();
-		
 		
 		
 		cp.getCreateContactBtn().click();

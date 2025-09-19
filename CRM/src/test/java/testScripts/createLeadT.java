@@ -103,7 +103,7 @@ public class createLeadT extends baseClass  {
 		
 		Set<String> window = driver.getWindowHandles();
 		
-		window.remove(winP);
+		/*window.remove(winP);
 		for(String WinId:window) {
 			driver.switchTo().window(WinId);
 			
@@ -114,13 +114,26 @@ public class createLeadT extends baseClass  {
 				e.printStackTrace();
 			}
 			
-			/*WebElement id = driver.findElement(By.id("search-criteria"));
+			WebElement id = driver.findElement(By.id("search-criteria"));
 			Select s = new Select(id);
-			s.selectByVisibleText("Campaign ID");*/
+			s.selectByVisibleText("Campaign ID");
 			driver.findElement(By.id("search-input")).sendKeys("CAM00030");
 			driver.findElement(By.xpath("//button[text()='Select']")).click();
-			driver.switchTo().defaultContent();
-		}
+			driver.switchTo().defaultContent();*/
+		
+		String parentId = driver.getWindowHandle();
+		wu.toSwitchToWindow(driver, parentId);
+    //dropdown
+		WebElement categoryDD = driver.findElement(By.id("search-criteria"));
+		Select ddSel = new Select(categoryDD);
+		//ddSel.selectByValue("campaignName");
+
+	//	driver.findElement(By.id("search-input")).sendKeys(CampInLead);
+	//	driver.findElement(By.xpath("//td[text()='" + CampInLead + "']/..//button[@class='select-btn']")).click();// dynamic
+																													// xpath
+
+		driver.switchTo().window(parentId);
+		
 		
 		
 		/*String disc = eu.toReadDataFromExcel("lead", 1, 17);
@@ -133,38 +146,7 @@ public class createLeadT extends baseClass  {
 		
 
 		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-	    
-		
-		
-
-		
-
-		
-		
-
-		
-		
-		
-		
-
-		
-
-		
-		
-		
-		
-		
-		
+	
 	}
 
 }
