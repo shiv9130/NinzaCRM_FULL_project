@@ -32,10 +32,10 @@ public class ExcelFileUtility {
 	//Get the row count
 	
 	public int getRowCount(String sheetName) throws EncryptedDocumentException, IOException {
-		FileInputStream fis= new FileInputStream("./configAppData/testScriptData.xlsx");
+		FileInputStream fis= new FileInputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
 		Workbook wb = WorkbookFactory.create(fis);
 		int rowCount = wb.getSheet(sheetName).getLastRowNum();
-		wb.close();
+		//wb.close();
 		return rowCount;
 	}
 	
