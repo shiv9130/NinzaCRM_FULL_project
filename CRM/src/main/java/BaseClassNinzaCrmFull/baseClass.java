@@ -89,7 +89,8 @@ public class baseClass {
     public void configAM() {
     	
     	dashboardPage dp = new dashboardPage(driver);
-        wu.moveToElement(driver, dp.getUserIcon());
+    	wu.waitForVisibilityOfElement(driver, dp.getUserIcon());     
+    	wu.moveToElement(driver, dp.getUserIcon());
         dp.getLogout().click();
         
     	Reporter.log("user logout sucessfully",true);

@@ -123,29 +123,14 @@ public class createLeadT extends baseClass  {
 		
 		String parentId = driver.getWindowHandle();
 		wu.toSwitchToWindow(driver, parentId);
-    //dropdown
-		WebElement categoryDD = driver.findElement(By.id("search-criteria"));
-		Select ddSel = new Select(categoryDD);
-		//ddSel.selectByValue("campaignName");
-
-	//	driver.findElement(By.id("search-input")).sendKeys(CampInLead);
-	//	driver.findElement(By.xpath("//td[text()='" + CampInLead + "']/..//button[@class='select-btn']")).click();// dynamic
-																													// xpath
+		driver.findElement(By.xpath("//button[@class='select-btn']")).click();// dynamic
 
 		driver.switchTo().window(parentId);
-		
-		
 		
 		/*String disc = eu.toReadDataFromExcel("lead", 1, 17);
 		cl.getTxtFdescription().sendKeys(disc);*/
 		
-		
-		
-		cl.getBtnCreateLeadpage().click();
-		
-		
-
-		
+		cl.getBtnCreateLeadpage().click();		
 	
 	}
 
