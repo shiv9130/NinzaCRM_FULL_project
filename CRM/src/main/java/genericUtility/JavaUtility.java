@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 public class JavaUtility {
 	
 	//To generate Random Number
@@ -12,7 +14,16 @@ public class JavaUtility {
 		int randomNum = ran.nextInt(5000);
 		return randomNum;
 	}
-
+	
+	public String generateRandomAlphabet() {
+		String ra=RandomStringUtils.randomAlphabetic(6);
+		return ra;		
+	}
+	
+	public String generateRandomEmail() {
+		String re=RandomStringUtils.randomAlphabetic(3)+RandomStringUtils.randomNumeric(2)+"@gmail.com";
+		return re;		
+	}
 	//To Capture the current system Date
 	public String getSystemDateddMMyyyy() {
 		Date dateObj= new Date();
