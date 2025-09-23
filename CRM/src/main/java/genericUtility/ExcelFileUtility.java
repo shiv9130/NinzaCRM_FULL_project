@@ -42,11 +42,12 @@ public class ExcelFileUtility {
 	//To write the data back to excel sheet
 	
 	public void writeDataIntoExcelFile(String sheetName, int rowNum, int cellNum, String data) throws EncryptedDocumentException, IOException {
-		FileInputStream fis= new FileInputStream("./configAppData/testScriptData.xlsx");
+		FileInputStream fis= new FileInputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
+
 		Workbook wb = WorkbookFactory.create(fis);
 		wb.getSheet(sheetName).getRow(rowNum).createCell(cellNum);
 		
-		FileOutputStream fos= new FileOutputStream("./configAppData/testScriptData.xlsx");
+		FileOutputStream fos= new FileOutputStream("./\\src\\main\\resources\\ninza crm data .xlsx");;
 		wb.write(fos);
 		wb.close();
 		

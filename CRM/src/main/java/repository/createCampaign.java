@@ -1,5 +1,7 @@
 package repository;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,12 +19,30 @@ public class createCampaign extends basePageN_CRM{
 	@FindBy(xpath = "//span[text()='Create Campaign']")
 	private WebElement createCampaignButton1;
 	
-	public WebElement getCreateCampaignButton1() {
-		return createCampaignButton1;
+	//table[@class="table table-striped table-hover"]
+	@FindBy(xpath = "//table[@class='table table-striped table-hover']")
+	private WebElement campaignTable;
+	
+	@FindBy(xpath = "//table[@class='table table-striped table-hover']/tbody/tr")
+	private List<WebElement> campaignTableRow;
+	
+	@FindBy(xpath = "//table[@class='table table-striped table-hover']/tbody/tr/td")
+	private List<WebElement> campaignTableColumn;
+	
+	public WebElement getCampaignTable() {
+		return campaignTable;
 	}
 
-	public void setCreateCampaignButton1(WebElement createCampaignButton1) {
-		this.createCampaignButton1 = createCampaignButton1;
+	public List<WebElement> getCampaignTableRow() {
+		return campaignTableRow;
+	}
+
+	public List<WebElement> getCampaignTableColumn() {
+		return campaignTableColumn;
+	}
+
+	public WebElement getCreateCampaignButton1() {
+		return createCampaignButton1;
 	}
 
 	@FindBy(xpath = "//label[text()='Campaign ID:']")
