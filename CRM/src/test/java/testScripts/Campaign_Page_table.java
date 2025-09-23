@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -23,10 +24,11 @@ public class Campaign_Page_table extends baseClass{
 		
 		for(int i=0; i < rows.size(); i++) {
 			
-			for(int j=0;j<=10;j++) {
-				eu.writeDataIntoExcelFile("camp", i+1, j, rows.get(i).getText());
-			}
-					
+	        List<WebElement> cells = cp.getCampaignTableColumn();
+	        for (int j = 0; j < cells.size(); j++) {
+	            String cellText = cells.get(j).getText();
+	            eu.writeDataIntoExcelFile("campaign", i + 1, j, cellText);
+	        }
 		}		
 		
 	}

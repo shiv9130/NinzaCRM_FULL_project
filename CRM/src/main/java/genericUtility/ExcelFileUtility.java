@@ -5,6 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
@@ -42,15 +45,26 @@ public class ExcelFileUtility {
 	//To write the data back to excel sheet
 	
 	public void writeDataIntoExcelFile(String sheetName, int rowNum, int cellNum, String data) throws EncryptedDocumentException, IOException {
-		FileInputStream fis= new FileInputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
+		//FileInputStream fis= new FileInputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
 
-		Workbook wb = WorkbookFactory.create(fis);
-		wb.getSheet(sheetName).getRow(rowNum).createCell(cellNum);
-		
-		FileOutputStream fos= new FileOutputStream("./\\src\\main\\resources\\ninza crm data .xlsx");;
-		wb.write(fos);
-		wb.close();
-		
+		FileInputStream fis = new FileInputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
+	    Workbook wb = WorkbookFactory.create(fis);
+	    Sheet sheet = wb.getSheet(sheetName);
+
+	    // Create row if it does not exist
+	    Row row = sheet.getRow(rowNum);
+	    if (row == null) {
+	        row = sheet.createRow(rowNum);
+	    }
+
+		// Create cell and set value
+	    Cell cell = row.createCell(cellNum);
+	    cell.setCellValue(data);
+
+	    FileOutputStream fos = new FileOutputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
+	    wb.write(fos);
+	    wb.close();
+
 	}
 
 
