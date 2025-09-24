@@ -27,7 +27,7 @@ public class Campaign_Page_table extends baseClass{
 	        List<WebElement> cells = cp.getCampaignTableColumn();
 	        for (int j = 0; j < cells.size(); j++) {
 	            String cellText = cells.get(j).getText();
-	            eu.writeDataIntoExcelFile("campaign", i + 1, j, cellText);
+	            eu.writeDataIntoExcelFile("Sheet1", i + 1, j, cellText);
 	        }
 		}		
 		
