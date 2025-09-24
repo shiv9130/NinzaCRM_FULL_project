@@ -1,4 +1,4 @@
-package testScripts;
+package dataProviderTests;
 
 import java.io.IOException;
 
