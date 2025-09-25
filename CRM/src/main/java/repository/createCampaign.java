@@ -29,6 +29,22 @@ public class createCampaign extends basePageN_CRM{
 	@FindBy(xpath = "//table[@class='table table-striped table-hover']/tbody/tr/td")
 	private List<WebElement> campaignTableColumn;
 	
+	@FindBy(xpath = "//a[text()='«']")
+	private WebElement btnLongBack;
+	
+	@FindBy(xpath = "//a[text()='⟨']")
+	private WebElement btnPrevious;
+	
+	@FindBy(xpath = "//a[text()='⟩']")
+	private WebElement btnNext;
+	
+	@FindBy(xpath = "//a[text()='»']")
+	private WebElement btnLongForward;
+	
+	@FindBy(xpath = "/a[@aria-label='Go to page number 1']")
+	private WebElement linkPageNo;
+			
+	
 	public WebElement getCampaignTable() {
 		return campaignTable;
 	}
@@ -159,6 +175,26 @@ public class createCampaign extends basePageN_CRM{
 
 	public WebElement getBtnCreateCampaign() {
 		return btnCreateCampaign;
+	}
+
+	public WebElement getBtnLongBack() {
+		return btnLongBack;
+	}
+
+	public WebElement getBtnPrevious() {
+		return btnPrevious;
+	}
+
+	public WebElement getBtnNext() {
+		return btnNext;
+	}
+
+	public WebElement getBtnLongForward() {
+		return btnLongForward;
+	}
+
+	public WebElement getLinkPageNo() {
+		return linkPageNo;
 	}
 	
 	
