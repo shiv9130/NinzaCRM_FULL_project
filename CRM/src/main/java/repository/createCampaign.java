@@ -2,6 +2,7 @@ package repository;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,7 +44,11 @@ public class createCampaign extends basePageN_CRM{
 	
 	@FindBy(xpath = "/a[@aria-label='Go to page number 1']")
 	private WebElement linkPageNo;
-			
+	
+	public WebElement getPaginationButton(WebDriver driver, int pageNum) {
+	    String xpath1 = "//a[@aria-label='Go to page number " + pageNum + "']";
+	    return driver.findElement(By.xpath(xpath1));
+	}			
 	
 	public WebElement getCampaignTable() {
 		return campaignTable;

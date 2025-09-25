@@ -26,7 +26,7 @@ public class exactDataFromPaginationTable extends baseClass {
 		List<WebElement> colms = cp.getCampaignTableColumn();
 		// WebElement next = cp.getBtnNext();
 		for (int i = 2; i <= 10; i++) {
-			WebElement ele = driver.findElement(By.xpath("//a[@aria-label='Go to page number " + i + "']"));
+			WebElement ele = cp.getPaginationButton(driver, i);
 
 			wu.waitForElementToBeClickable(driver, ele);
 			ele.click();
