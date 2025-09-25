@@ -31,16 +31,19 @@ public class exactDataFromPaginationTable extends baseClass {
 			wu.waitForElementToBeClickable(driver, ele);
 			ele.click();
 		}
-
 		List<WebElement> data = driver.findElements(By.xpath("//tr[9]/td[1] | //tr[9]/td[2]"));
+
+		int excelCol = 0; // start writing in column 0
+		int excelRow = 0; // or use pageRow if looping pages
+
 		for (WebElement s : data) {
-			
-			Reporter.log(s.getText(),true);
 			String txt = s.getText();
-			for(int i=0;i<=2;i++) {
-			eu.writeDataIntoExcelFile("pagination", i, i, txt);
-			}
-			
+			System.out.println(txt); // debug
+
+			// write into Excel row 0, col0 and col1
+			eu.writeDataIntoExcelFile("pagination", excelRow, excelCol, txt);
+
+			excelCol++; // move to next column
 		}
 
 	}
