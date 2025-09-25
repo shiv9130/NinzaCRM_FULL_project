@@ -1,5 +1,6 @@
 package genericUtility;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import exceptionsUtility.FileNotFoundException;
 
@@ -43,28 +45,46 @@ public class ExcelFileUtility {
 	}
 	
 	//To write the data back to excel sheet
-	
-	public void writeDataIntoExcelFile(String sheetName, int rowNum, int cellNum, String data) throws EncryptedDocumentException, IOException {
-		//FileInputStream fis= new FileInputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
+		public void writeDataIntoExcelFile(String sheetName, int rowNum, int cellNum, String data) 
+	        throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
-	    Workbook wb = WorkbookFactory.create(fis);
-	    Sheet sheet = wb.getSheet(sheetName);
+	    String filePath = "./src/main/resources/ninza.xlsx";  
+	    File file = new File(filePath);
+	    Workbook wb;
+	    Sheet sheet;
 
-	    // Create row if it does not exist
+	    if (file.exists()) {
+	        // File exists → load workbook
+	        FileInputStream fis = new FileInputStream(file);
+	        wb = WorkbookFactory.create(fis);
+	        fis.close();
+	        
+	        sheet = wb.getSheet(sheetName);
+	        if (sheet == null) {
+	            sheet = wb.createSheet(sheetName); // create sheet if not present
+	        }
+	    } else {
+	        // File not exists → create new workbook and sheet
+	        wb = new XSSFWorkbook();  
+	        sheet = wb.createSheet(sheetName);
+	    }
+
+	    // Create row if not exist
 	    Row row = sheet.getRow(rowNum);
 	    if (row == null) {
 	        row = sheet.createRow(rowNum);
 	    }
 
-		// Create cell and set value
+	    // Create cell and set value
 	    Cell cell = row.createCell(cellNum);
 	    cell.setCellValue(data);
 
-	    FileOutputStream fos = new FileOutputStream("./\\src\\main\\resources\\ninza crm data .xlsx");
+	    // Write changes into file
+	    FileOutputStream fos = new FileOutputStream(filePath);
 	    wb.write(fos);
-	    wb.close();
 
+	    fos.close();
+	    wb.close();
 	}
 
 
